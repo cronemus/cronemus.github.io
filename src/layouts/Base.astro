@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Chance B. Ronemus — geologist. NSF Postdoctoral Fellow, Idaho State University. Sedimentology, tectonics, geochronology, and stable isotope geochemistry.',
+} = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/cv/', label: 'CV' },
+  { href: '/research/', label: 'Publications' },
+  { href: '/teaching/', label: 'Research Group' },
+  { href: '/media/', label: 'Media' },
+  { href: '/photography/', label: 'Photography' },
+  { href: '/climbing/', label: 'Climbing' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/media/2025/04/site-icon.png" />
+    <link rel="apple-touch-icon" href="/media/2025/04/site-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="inner">
+        <a class="site-title" href="/">Chance B. Ronemus</a>
+        <nav class="site-nav" aria-label="Main navigation">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <div>
+          <h2>Chance B. Ronemus</h2>
+          <p class="tagline">
+            Rocks — Climbing them, studying them, and shooting them with
+            lasers until they tell me their secrets
+          </p>
+        </div>
+        <div>
+          <address>
+            <a href="mailto:chanceronemus@isu.edu">chanceronemus@isu.edu</a><br />
+            <a
+              href="https://www.google.com/maps/search/Department+of+Geosciences,Idaho+State+University,921+South+8th+Avenue,+Pocatello,+ID,+83209+USA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Department of Geosciences<br />
+              Idaho State University<br />
+              921 South 8th Avenue<br />
+              Pocatello, ID 83209, USA
+            </a>
+          </address>
+        </div>
+        <p class="fineprint">
+          © {new Date().getFullYear()} Chance B. Ronemus. All uncredited
+          photos are my own — please ask if you'd like to use one.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

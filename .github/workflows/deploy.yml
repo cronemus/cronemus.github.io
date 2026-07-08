@@ -1,0 +1,63 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- CV pipeline -------------------------------------------------
+      # If cv/cv.tex exists, compile it and publish the PDF at the stable
+      # URL /files/cv.pdf. Until then, the committed public/files/cv.pdf
+      # fallback is served unchanged.
+      - name: Compile CV from LaTeX
+        if: ${{ hashFiles('cv/cv.tex') != '' }}
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex
+          working_directory: cv
+          latexmk_use_lualatex: false
+
+      - name: Publish compiled CV to stable URL
+        if: ${{ hashFiles('cv/cv.tex') != '' }}
+        run: |
+          mkdir -p public/files
+          cp cv/cv.pdf public/files/cv.pdf
+
+      # --- Site build --------------------------------------------------
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
