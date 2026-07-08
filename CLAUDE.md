@@ -33,8 +33,15 @@ must not change without adding a redirect page.
 ## The CV rule (important)
 
 The CV has exactly one URL: `/files/cv.pdf`. Never link a dated CV
-filename. To update the CV, edit `cv/cv.tex` (CI recompiles and publishes
-it) or, if no LaTeX source exists yet, replace `public/files/cv.pdf`.
+filename. The PDF **auto-publishes from the LaTeX source** in the separate
+repo `~/Desktop/CV/Ronemus-CV-Tex`: compiling `main.tex` there runs
+`publish-cv.sh` (wired via that repo's `.latexmkrc` `$success_cmd`), which
+copies the freshly built PDF to `public/files/cv.pdf` and commits + pushes
+it — so the Pages deploy refreshes the CV automatically. To update the CV,
+recompile it in that repo; don't hand-edit `public/files/cv.pdf` (a direct
+replace works in a pinch). `deploy.yml` also carries a **dormant** CI path
+that would compile `cv/cv.tex` if it ever existed — currently unused; we
+deliberately publish the locally-built PDF instead.
 
 ## Verification
 
