@@ -9,11 +9,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# TEMPORARY (Phase 2 staging): hold the custom domain out of the deploy so the
-# <username>.github.io preview works. At DNS cutover (Phase 3), delete these two
-# lines and commit public/CNAME to attach chanceronemus.com to GitHub Pages.
-public/CNAME
-
 # LaTeX build artifacts (CV compiles in CI; keep only cv.tex + assets in git)
 cv/*.aux
 cv/*.log
