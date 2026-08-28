@@ -8,11 +8,13 @@ interface Props {
 
 const {
   title,
-  description = 'Chance B. Ronemus — geologist. NSF Postdoctoral Fellow, Idaho State University. Sedimentology, tectonics, geochronology, and stable isotope geochemistry.',
+  description = 'Chance B. Ronemus — geologist. Assistant Professor, Department of Earth, Energy & Environment, University of Calgary. Sedimentology, tectonics, geochronology, and stable isotope geochemistry.',
 } = Astro.props;
 
 const nav = [
   { href: '/', label: 'Home' },
+  { href: '/join/', label: 'Join the Group' },
+  { href: '/research-projects/', label: 'Research' },
   { href: '/cv/', label: 'CV' },
   { href: '/research/', label: 'Publications' },
   { href: '/teaching/', label: 'Research Group' },
@@ -72,14 +74,14 @@ const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
           <address>
             <a href="mailto:chance.ronemus@ucalgary.ca">chance.ronemus@ucalgary.ca</a><br />
             <a
-              href="https://www.google.com/maps/search/Department+of+Geosciences,Idaho+State+University,921+South+8th+Avenue,+Pocatello,+ID,+83209+USA"
+              href="https://www.google.com/maps/search/Department+of+Earth,+Energy+%26+Environment,+University+of+Calgary,+2500+University+Drive+NW,+Calgary,+AB,+T2N+1N4+Canada"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Department of Geosciences<br />
-              Idaho State University<br />
-              921 South 8th Avenue<br />
-              Pocatello, ID 83209, USA
+              Department of Earth, Energy &amp; Environment<br />
+              University of Calgary<br />
+              2500 University Drive NW<br />
+              Calgary, AB T2N 1N4, Canada
             </a>
           </address>
         </div>
