@@ -39,6 +39,17 @@ const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+
+    {/* Privacy-friendly analytics (GoatCounter): no cookies, no personal
+        data, so no consent banner needed. Production builds only. */}
+    {import.meta.env.PROD && (
+      <script
+        is:inline
+        async
+        data-goatcounter="https://YOUR_GOATCOUNTER_CODE.goatcounter.com/count"
+        src="https://gc.zgo.at/count.js"
+      ></script>
+    )}
   </head>
   <body>
     <header class="site-header">
