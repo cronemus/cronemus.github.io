@@ -51,6 +51,12 @@ media paths, check for broken references:
 
 ## Adding a blog later
 
-Planned but not built: use an Astro content collection
-(`src/content/posts/*.md`) with a listing page and RSS via
-`@astrojs/rss`. Keep post URLs under `/posts/…`.
+**News list** (built 2026-09-10): `src/data/news.ts` holds dated one-line
+entries; `src/components/NewsList.astro` renders them newest-first (`limit`
+prop); `/news/` shows all, the homepage shows the latest three. To post news,
+append an object to the array — no other file changes needed. Use `label`
+for season-level dates ("Summer 2026"). There is no blog, RSS, or content
+collection by design; keep entries to one sentence.
+
+## Inbox from _UCALGARY hub
+- 2026-09-09 — Tinguiririca paper published online 2026-09-08 (*JGR: Solid Earth* 131(9), e2026JB034002, https://doi.org/10.1029/2026JB034002, open access) — `src/content/cv-body.html` still says *in press*; it regenerates from the CV build (dispatched to the CV spoke), so after that build check the CV / Publications page shows the full citation with a DOI link; if a news line exists anywhere on the site, add one — see ~/Documents/_UCALGARY/DECISIONS.md

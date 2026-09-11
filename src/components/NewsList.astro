@@ -1,0 +1,31 @@
+---
+// Renders the news list, newest first. Pass `limit` to show only the latest N.
+import { news } from '../data/news';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+
+const sorted = [...news].sort((a, b) => (a.date < b.date ? 1 : -1));
+const items = limit ? sorted.slice(0, limit) : sorted;
+
+const fmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+const display = (item: (typeof news)[number]) =>
+  item.label ?? fmt.format(new Date(`${item.date}T00:00:00Z`));
+---
+
+<ul class="news">
+  {items.map((item) => (
+    <li>
+      <time datetime={item.date}>{display(item)}</time>
+      <span set:html={item.html} />
+    </li>
+  ))}
+</ul>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import NewsList from '../components/NewsList.astro';
 ---
 
 <Base title="Chance B. Ronemus — Geologist">
@@ -26,6 +27,12 @@ import Base from '../layouts/Base.astro';
 
   <p><strong>I am recruiting M.Sc. and Ph.D. students for funded
   positions. <a href="/join/">Read more and get in touch</a>.</strong></p>
+
+  <h2>Recent news</h2>
+
+  <NewsList limit={3} />
+
+  <p class="muted"><a href="/news/">All news &rarr;</a></p>
 
   <hr />
 

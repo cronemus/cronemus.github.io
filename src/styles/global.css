@@ -141,6 +141,31 @@ blockquote {
 .muted, .caption { color: var(--text-muted); }
 .center { text-align: center; }
 
+/* ---------- news list (homepage + /news/) ---------- */
+
+.news {
+  list-style: none;
+  padding-left: 0;
+}
+
+.news li {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0.6rem 0;
+  align-items: baseline;
+}
+
+.news time {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .news li { grid-template-columns: 1fr; gap: 0; }
+}
+
 /* ---------- images & figures ---------- */
 
 img { max-width: 100%; height: auto; display: block; }
