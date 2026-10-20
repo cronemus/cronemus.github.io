@@ -25,7 +25,15 @@ const display = (item: (typeof news)[number]) =>
   {items.map((item) => (
     <li>
       <time datetime={item.date}>{display(item)}</time>
-      <span set:html={item.html} />
+      <div>
+        <span set:html={item.html} />
+        {item.image && (
+          <figure>
+            <img src={item.image.src} alt={item.image.alt} loading="lazy" />
+            {item.image.caption && <figcaption set:html={item.image.caption} />}
+          </figure>
+        )}
+      </div>
     </li>
   ))}
 </ul>

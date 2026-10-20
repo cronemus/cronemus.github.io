@@ -55,7 +55,8 @@ media paths, check for broken references:
 entries; `src/components/NewsList.astro` renders them newest-first (`limit`
 prop); `/news/` shows all, the homepage shows the latest three. To post news,
 append an object to the array — no other file changes needed. Use `label`
-for season-level dates ("Summer 2026"). There is no blog, RSS, or content
+for season-level dates ("Summer 2026"), and the optional `image` (`src`, `alt`,
+`caption`) for a photo under the sentence. There is no blog, RSS, or content
 collection by design; keep entries to one sentence.
 
 ## Inbox from _UCALGARY hub

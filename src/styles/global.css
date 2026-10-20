@@ -162,6 +162,8 @@ blockquote {
   white-space: nowrap;
 }
 
+.news figure { margin: 0.75rem 0 1.25rem; }
+
 @media (max-width: 520px) {
   .news li { grid-template-columns: 1fr; gap: 0; }
 }

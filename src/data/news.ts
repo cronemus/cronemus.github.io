@@ -4,15 +4,33 @@
 // by `date` (newest first) at render time. Keep `html` to one sentence; inline
 // <a> links are fine. `date` is an ISO date used for sorting and, by default,
 // for display ("September 8, 2026"). Set `label` to override the displayed date
-// when only a season or month is meaningful ("Summer 2026").
+// when only a season or month is meaningful ("Summer 2026"). Set `image` to show
+// a photo under the sentence (optimize it into public/media first).
 
 export interface NewsItem {
   date: string;   // YYYY-MM-DD
   html: string;   // one sentence; inline HTML allowed
   label?: string; // optional display override for the date
+  image?: {       // optional photo shown under the sentence
+    src: string;
+    alt: string;
+    caption?: string; // inline HTML allowed
+  };
 }
 
 export const news: NewsItem[] = [
+  {
+    date: '2026-10-14',
+    label: 'October 2026',
+    html:
+      'A great GSA Connects in Denver: <a href="/teaching/">Amarissa Cramer and Tiana Hursh</a> presented posters on the detrital zircon and basin record of coastal Chile, and I convened the Pardee Keynote Symposium <em>Bottoms Up</em> and a session on the pre-Neogene tectonic evolution of South America, co-taught a short course on detrital geochronology data, and gave an invited talk, <em>Whence the lustrous stones?</em>, on the provenance of Paleogene gravels in the Andean foreland.',
+    image: {
+      src: '/media/2026/10/gsa-2026-cramer-hursh-posters.jpg',
+      alt: 'Amarissa Cramer and Tiana Hursh, arms raised in celebration, standing at either end of their two research posters in the GSA Connects poster hall',
+      caption:
+        'Amarissa Cramer (left) and Tiana Hursh (right) with their posters, &ldquo;No allochthons allowed&rdquo; and &ldquo;Faulted and twice drowned.&rdquo;',
+    },
+  },
   {
     date: '2026-09-08',
     html:
