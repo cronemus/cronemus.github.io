@@ -20,6 +20,17 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   {
+    date: '2026-10-26',
+    html:
+      'Our paper on Miocene surface uplift and moisture-source change in the southern Central Andes (~32°S), resolved with paired volcanic glass and pedogenic carbonate isotopes, has been accepted in <em>Earth and Planetary Science Letters</em>.',
+    image: {
+      src: '/media/2026/10/manantiales-paleoelevation.png',
+      alt: 'Graph of paleoelevation in kilometres against age in millions of years for seven sample groups: estimates of about 0.5 to 0.9 km before 18.5 Ma rise to about 2.2 to 2.6 km by 17 to 15 Ma, near the modern Manantiales basin elevation of about 2.55 km.',
+      caption:
+        'Paleoelevation estimates for the Manantiales basin from pedogenic carbonate (circles) and volcanic glass (triangles); carbonate data record ~1.9 km of surface uplift, mostly between ~18.6 and 16.5 Ma. MCO, Miocene Climatic Optimum.',
+    },
+  },
+  {
     date: '2026-10-14',
     label: 'October 2026',
     html:
